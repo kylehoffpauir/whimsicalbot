@@ -1,0 +1,6 @@
+Bot ID 	fda23af731547452ef8a34ed6a
+Group Name 	Terminally Online
+Group Id 	29691304
+Avatar URL 	https://i.groupme.com/800x800.jpeg.95d7662bdbb048798887b6a248e077be
+Callback URL 	https://whimsybot.herokuapp.com/
+Active 	true

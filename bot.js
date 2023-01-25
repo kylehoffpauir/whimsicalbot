@@ -8,7 +8,7 @@ function respond() {
       botRegex = /^\/cool guy$/;
 
   var requestSentimentReq = JSON.parse(this.req.chunks[0]),
-      whimsyBotRegex = /^\/whimsy$/;
+      whimsyBotRegex = /^\/whimsy .*$/;
 
 
   if(request.text && botRegex.test(request.text)) {
@@ -30,7 +30,7 @@ function postWhimsyMessage(text) {
   var botResponse, options, body, botReq;
   var Sentiment = require('sentiment');
   var sentiment = new Sentiment();
-  var result = sentiment.analyze(text);
+  var result = sentiment.analyze(text.substring("/whimsy".length));
   botResponse = result;
 
   options = {

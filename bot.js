@@ -28,7 +28,9 @@ function postWhimsyMessage(text) {
   var botResponse, options, body, botReq;
   var Sentiment = require('sentiment');
   var sentiment = new Sentiment();
+  console.log(text)
   var result = sentiment.analyze(text.substring("/whimsy".length));
+  console.log(result)
   botResponse = result.toString();
 
   options = {

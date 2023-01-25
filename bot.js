@@ -31,7 +31,7 @@ function postWhimsyMessage(text) {
   console.log(text)
   var result = sentiment.analyze(text.substring("/whimsy".length));
   console.log(result)
-  botResponse = result.toString();
+  botResponse = result.score;
 
   options = {
     hostname: 'api.groupme.com',

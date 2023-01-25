@@ -1,7 +1,7 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-
 var botID = process.env.BOT_ID;
+var prevReqText = ""
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -15,10 +15,11 @@ function respond() {
     this.res.end();
   } else if(request.text && whimsyBotRegex.test(request.text)) {
     this.res.writeHead(200);
-    postWhimsyMessage(request.text);
+    postWhimsyMessage(prevReqText);
     this.res.end();
   } else {
     console.log("don't care");
+    prevReqText = request.text
     this.res.writeHead(200);
     this.res.end();
   }

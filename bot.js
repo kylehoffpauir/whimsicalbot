@@ -7,15 +7,42 @@ function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/cool guy$/;
 
+  var requestSentimentReq = JSON.parse(this.req.chunks[0]),
+      whimsyBotRegex = /^\/whimsy$/;
+
+
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
     postMessage();
+    this.res.end();
+  } else if(request.text && whimsyBotRegex.test(request.text)) {
+    this.res.writeHead(200);
+    postWhimsyMessage(request.text);
     this.res.end();
   } else {
     console.log("don't care");
     this.res.writeHead(200);
     this.res.end();
   }
+}
+
+function postWhimsyMessage(text) {
+  var botResponse, options, body, botReq;
+  var Sentiment = require('sentiment');
+  var sentiment = new Sentiment();
+  var result = sentiment.analyze(text);
+  botResponse = result;
+
+  options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST'
+  };
+
+  body = {
+    "bot_id": botID,
+    "text": botResponse
+  };
 }
 
 function postMessage() {

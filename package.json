@@ -12,7 +12,7 @@
     "sentiment": "^5.0.2"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "4.x.x"
   },
   "repository": {
     "type": "git",

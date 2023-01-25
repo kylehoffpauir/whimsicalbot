@@ -29,7 +29,7 @@ function postWhimsyMessage(text) {
   var Sentiment = require('sentiment');
   var sentiment = new Sentiment();
   var result = sentiment.analyze(text.substring("/whimsy".length));
-  botResponse = result;
+  botResponse = result.toString();
 
   options = {
     hostname: 'api.groupme.com',

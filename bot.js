@@ -15,7 +15,7 @@ function respond() {
     this.res.writeHead(200);
     postMessage();
     this.res.end();
-  } else if(request.text && whimsyBotRegex.test(request.text)) {
+  } else if(requestSentimentReq.text && whimsyBotRegex.test(request.text)) {
     this.res.writeHead(200);
     postWhimsyMessage(request.text);
     this.res.end();

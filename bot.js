@@ -1,13 +1,12 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
-var Sentiment = require('sentiment');
 
 var botID = process.env.BOT_ID;
 
 function respond() {
-  let request = JSON.parse(this.req.chunks[0]);
-  let botRegex = /^\/cool guy$/;
-  let whimsyBotRegex = /^\/whimsy .*$/;
+  var request = JSON.parse(this.req.chunks[0]),
+      botRegex = /^\/cool guy$/,
+      whimsyBotRegex = /^\/whimsy .*$/;
 
 
   if(request.text && botRegex.test(request.text)) {
@@ -27,7 +26,7 @@ function respond() {
 
 function postWhimsyMessage(text) {
   var botResponse, options, body, botReq;
-
+  var Sentiment = require('sentiment');
   var sentiment = new Sentiment();
   var result = sentiment.analyze(text.substring("/whimsy".length));
   botResponse = result;

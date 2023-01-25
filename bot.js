@@ -5,9 +5,10 @@ var Sentiment = require('sentiment');
 var botID = process.env.BOT_ID;
 
 function respond() {
-  var request = JSON.parse(this.req.chunks[0]),
-      botRegex = /^\/cool guy$/,
-      whimsyBotRegex = /^\/whimsy .*$/;
+  var request = JSON.parse(this.req.chunks[0])
+
+  var botRegex = /^\/cool guy$/
+  var whimsyBotRegex = /^\/whimsy .*$/;
 
 
   if(request.text && botRegex.test(request.text)) {

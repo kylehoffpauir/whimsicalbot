@@ -1,5 +1,6 @@
 var HTTPS = require('https');
 var cool = require('cool-ascii-faces');
+const Sentiment = require("sentiment");
 var botID = process.env.BOT_ID;
 var prevReqText = ""
 
@@ -19,21 +20,24 @@ function respond() {
     this.res.end();
   } else {
     console.log("don't care");
-    prevReqText = request.text
     this.res.writeHead(200);
     this.res.end();
   }
 }
 
-function postWhimsyMessage(text) {
-  var botResponse, options, body, botReq;
+function calcWhimsy(text) {
   var Sentiment = require('sentiment');
   var sentiment = new Sentiment();
-  console.log(text)
+  console.log(text);
   var result = sentiment.analyze(text.substring("/whimsy".length));
-  console.log(result)
+  console.log(result);
   botResponse = result.score.toString();
+  return botResponse
+}
 
+function postWhimsyMessage(text) {
+  var botResponse, options, body, botReq;
+  botResponse = calcWhimsy(text)
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',

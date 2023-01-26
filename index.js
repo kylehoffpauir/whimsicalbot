@@ -34,10 +34,10 @@ function ping() {
 
 r = require('rethinkdb')
 var username = 'admin'
-var password = ''
+var password = 'cf01617300586418edb204ab2a9c2757c74ac671'
 var name = 'cf484706-5cc6-4430-b04b-4b707ee33f09'
 r.connect({ host: 'cf484706-5cc6-4430-b04b-4b707ee33f09.db.rdb.rethinkdb.cloud',
-      port: 28015, username: username, name: name}, function(err, conn) {
+      port: 28015, username: username, password: password, name: name}, function(err, conn) {
   if(err) throw err;
   r.db('test').tableCreate('tv_shows').run(conn, function(err, res) {
     if(err) throw err;
